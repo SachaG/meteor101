@@ -96,9 +96,6 @@
 
 			    console.log('ready!')
 
-			    if(Reveal.getIndices().h>=24)
-	    			$('body').addClass('show-frame');
-
 					$(".commit-link").click(function(e){
 						e.preventDefault();
 						var link = $(this);
@@ -121,7 +118,7 @@
 			Reveal.addEventListener( 'slidechanged', function( event){
 				console.log('changed!')
 				console.log(Reveal.getIndices().h)
-				if(Reveal.getIndices().h>=24){
+				if(Reveal.getIndices().h>=25){
     			$('body').addClass('show-frame');
 				}else{
 					$('body').removeClass('show-frame');

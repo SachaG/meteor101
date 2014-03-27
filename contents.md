@@ -148,7 +148,7 @@ Collect data, then display it.
 
 
 
-# Chapter 1: Setting Up
+# Step 1: Setting Up
 
 
 
@@ -175,7 +175,7 @@ cd gribbble
 ```bash
 meteor
 ```
-<a href="javascript:void(0)" class="commit-link toggle-frame" data-value="c1-1">Run</a>
+<a href="javascript:void(0)" class="commit-link" data-value="c1-1">Run</a>
 
 
 
@@ -200,7 +200,7 @@ We now have a working Meteor app. Let's make it actually do something!
 
 
 
-# Chapter 2: Collecting Data
+# Step 2: Collecting Data
 
 
 
@@ -264,7 +264,7 @@ We're now collecting the 12 most popular Dribbble shots every hour. Next step: d
 
 
 
-# Chapter 3: Displaying Data
+# Step 3: Displaying Data
 
 
 
@@ -379,7 +379,7 @@ We're storing and displaying data. We now need to control the flow of data from 
 
 
 
-# Chapter 4: Controlling Data
+# Step 4: Controlling Data
 
 
 
@@ -422,7 +422,7 @@ We've set rules controlling what data is made available to the client, as well a
 
 
 
-# Chapter 5: Getting Fancy
+# Step 5: Getting Fancy
 
 
 

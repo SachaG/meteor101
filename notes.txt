@@ -21,3 +21,27 @@ Meteor stores data in MongoDB collections, i.e. lists of similar documents.
 s2=_.first(_.map(Snapshots.find().fetch(), function(s){s.data.shots = _.first(s.data.shots, 12); return s;}), 48)
 
 _.each(s, function(snapshot){Snapshots.insert(snapshot)})
+
+$.getJSON('https://gist.githubusercontent.com/SachaG/9798180/raw/1737a60e52c0d654fd4dc77b20d46d30c1e0344b/Snapshots.json', function(data){_.each(data, function(snapshot){Snapshots.insert(snapshot)})})
+
+
+$.ajax({
+  url: 'https://gist.githubusercontent.com/SachaG/9798180/raw/1737a60e52c0d654fd4dc77b20d46d30c1e0344b/Snapshots.json',
+  type: 'GET',
+  dataType: 'jsonp'
+}).success( function(gistdata) {
+console.log(gistdata)
+  // This can be less complicated if you know the gist file name
+  var objects = [];
+  for (file in gistdata.data.files) {
+    if (gistdata.data.files.hasOwnProperty(file)) {
+      var o = JSON.parse(gistdata.data.files[file].content);
+      if (o) {
+        objects.push(o);
+      }
+    }
+  }
+  if (objects.length > 0) {
+    // DoSomethingWith(objects[0])
+  }
+})
