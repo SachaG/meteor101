@@ -1,0 +1,23 @@
+mongorestore --host 127.0.0.1:3001 --db meteor ~/dump/daybbble_meteor_com
+db.hours.renameCollection('snapshots')
+
+
+- 10 things you need to know about Meteor (in the style of Upworthy headlines)
+
+
+
+
+
+# Collections
+Meteor stores data in MongoDB collections, i.e. lists of similar documents.
+
+- modify root commit
+- add empty commit even before root commit?
+- show file structure?
+
+- can you get rid of the "page" parameter when querying the dribbble api? (does it default to 1?)
+
+
+s2=_.first(_.map(Snapshots.find().fetch(), function(s){s.data.shots = _.first(s.data.shots, 12); return s;}), 48)
+
+_.each(s, function(snapshot){Snapshots.insert(snapshot)})
