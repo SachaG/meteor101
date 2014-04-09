@@ -170,3 +170,12 @@ p.test:before{
   margin-top: 80px !important;
   margin-bottom: 80px !important;
 }
+
+.reveal .file{
+  font-size: 80%;
+  color: rgba(255,255,255,0.5);
+  font-weight: 100;
+}
+.reveal .file code{
+  color: white;
+}
