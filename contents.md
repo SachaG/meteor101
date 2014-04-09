@@ -1,9 +1,37 @@
 # Meteor 101
-###Sacha Greif
 
 @SachaGreif
 
 Discover Meteor
+
+
+
+# How It All Started
+
+
+
+<p><img src="images/hackernews.png" class="noborder bigger"></p>
+Note:
+At the time, there wasn't anything like Hacker News for designers. 
+
+
+
+<p><img src="images/meteor.png" class="noborder bigger"></p>
+Note:
+“Wow, a new, experimental, undocumented web framework! What a great way to save some time!”
+
+
+
+<p><img src="images/telescope.png" class="noborder bigger"></p>
+
+
+
+<p><img src="images/sidebar.png" class="noborder bigger"></p>
+
+
+
+<p><img src="images/discovermeteor.png" class="noborder bigger"></p>
+<!-- <p><img src="images/discovermeteorcontent.png" class="noborder bigger"></p> -->
 
 
 
@@ -54,16 +82,13 @@ Discover Meteor
 
 
 ## Everything Included
-Meteor automatically loads any HTML, CSS, or JavaScript file included in a repository.
+<!-- Meteor automatically loads any HTML, CSS, or JavaScript file included in a repository. -->
 
 
 
 ## Hot Code Reload
-Any change to an app's source files automatically triggers a browser refresh.
-
-
-
-## Recap
+<!-- Any change to an app's source files automatically triggers a browser refresh. -->
+Note:
 Meteor takes existing technologies and makes them work together seamlessly, on both client and server. 
 
 
@@ -72,12 +97,8 @@ Meteor takes existing technologies and makes them work together seamlessly, on b
 
 
 
-## Dribbble
-A community site that lets you post and vote on design work.
-
-
-
-<p><img src="images/dribbble-m.png"></p>
+<p><img src="images/dribbble-m.png" class="noborder bigger"></p>
+Note:
 The Dribbble homepage: the 12 most popular “shots”.
 
 
@@ -93,6 +114,7 @@ A grid of the homepage over time.
 
 
 <p><img src="images/daybbble-diagram-1.png" class="noborder bigger"></p>
+Note: that's the end of the section with pretty images, it's all code from now on.
 
 
 
@@ -133,7 +155,7 @@ meteor
 
 
 
-## Create the File Structure
+## File Structure
 - Remove Meteor's placeholder files.
 ```bash
 rm gribbble.css gribbble.html gribbble.js
@@ -163,8 +185,8 @@ We now have a working Meteor app. Let's make it actually do something!
 Snapshots = new Meteor.Collection('snapshots');
 ```
 `/collections/snapshots.js` (both)
-<a href="javascript:void(0)" class="commit-link" data-value="c1-3">Run</a>
-<p class="test">`Snapshots.find().fetch()`</p>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-3">Run</a> -->
+<!-- <p class="test">`Snapshots.find().fetch()`</p> -->
 
 
 

@@ -115,12 +115,13 @@
 						var commit = link.data('value');
 						console.log(commit);
 						link.addClass('working');
+						$('body').addClass('split-layout1');
 						$.get('http://bash.dev/?commit='+commit, function(result){
 							console.log(result);
 						});
 						setTimeout(function(){
 							link.removeClass('working');
-						}, 3000);
+						}, 2000);
 					});
 
 					$('.toggle-frame').click(function(){
@@ -134,8 +135,8 @@
 				console.log(index)
 				$('body').removeClass('full-frame split-layout1 split-layout2');
 
-				if (index == 19){
-					$('body').addClass('full-frame');
+				if (index == 23){
+					$('body').addClass('split-layout1');
 				}
 
 			});
