@@ -162,7 +162,7 @@ We now have a working Meteor app. Let's make it actually do something!
 ```js
 Snapshots = new Meteor.Collection('snapshots');
 ```
-`/collections/snapshots.js` (both)
+<div class="file">`/collections/snapshots.js` (both)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c1-3">Run</a>
 <p class="test">`Snapshots.find().fetch()`</p>
 
@@ -185,7 +185,7 @@ var queryAPI = function () {
   });
 }
 ```
-`/server/api.js` (server)
+<div class="file">`/server/api.js` (server)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c1-4">Run</a>
 
 
@@ -196,7 +196,7 @@ Meteor.setInterval(function(){
   queryAPI();
 }, 3600000);
 ```
-`server/api.js` (server)
+<div class="file">`/server/api.js` (server)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c1-5">Run</a>
 
 
@@ -207,7 +207,7 @@ Meteor.methods({
   queryFromClient: queryAPI
 });
 ```
-`server/api.js` (server)
+<div class="file">`/server/api.js` (server)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c1-6">Run</a>
 <p class="test">`Meteor.call('queryFromClient')`</p>
 
@@ -250,7 +250,7 @@ $.getJSON(url, function(data){
   {{> grid}}
 </body>
 ```
-`/client/main.html` (client)
+<div class="file">`/client/main.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-1">Run</a>
 
 
@@ -272,7 +272,7 @@ $.getJSON(url, function(data){
   </div>
 </template>
 ```
-`/client/grid.html` (client)
+<div class="file">`/client/grid.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-2">Run</a>
 
 
@@ -288,7 +288,7 @@ Template.grid.helpers({
   }
 });
 ```
-`/client/grid.js` (client)
+<div class="file">`/client/grid.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-3">Run</a>
 
 
@@ -307,7 +307,7 @@ Template.grid.helpers({
   </div>
 </template>
 ```
-`/client/grid.html` (client)
+<div class="file">`/client/grid.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-4">Run</a>
 
 
@@ -325,7 +325,7 @@ Template.grid.helpers({
   </a>
 </template>
 ```
-`/client/shot.html` (client)
+<div class="file">`/client/shot.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-5">Run</a>
 
 
@@ -344,7 +344,7 @@ Template.grid.helpers({
   </div>
 </template>
 ```
-`/client/grid.html` (client)
+<div class="file">`/client/grid.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-6">Run</a>
 
 
@@ -377,7 +377,7 @@ Meteor.publish('snapshots', function(limit) {
   });
 });
 ```
-`/server/publications.js` (server)
+<div class="file">`/server/publications.js` (server)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c3-2">Run</a>
 
 
@@ -386,7 +386,7 @@ Meteor.publish('snapshots', function(limit) {
 ```js
 Meteor.subscribe('snapshots', 12);
 ```
-`/client/main.js` (client)
+<div class="file">`/client/main.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c3-3">Run</a>
 <p class="test">`Snapshots.find().fetch()`</p>
 
@@ -412,7 +412,7 @@ Template.shot.events({
   }
 });
 ```
-`/client/shot.js` (client)
+<div class="file">`/client/shot.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-1">Run</a>
 <p class="test">`Session.get('zoomedShot')`</p>
 
@@ -431,7 +431,7 @@ Template.shot.events({
   </div>
 </template>
 ```
-`/client/zoom.html` (client)
+<div class="file">`/client/zoom.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-2">Run</a>
 
 
@@ -444,7 +444,7 @@ Template.zoom.helpers({
   }
 });
 ```
-`/client/zoom.js` (client)
+<div class="file">`/client/zoom.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-3">Run</a>
 
 
@@ -457,7 +457,7 @@ Template.zoom.helpers({
   {{> zoom}}
 </body>
 ```
-`/client/main.html` (client)
+<div class="file">`/client/main.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-4">Run</a>
 
 
@@ -472,7 +472,7 @@ Meteor.publish('snapshots', function(limit, skip) {
   });
 });
 ```
-`/server/publications.js` (server)
+<div class="file">`/server/publications.js` (server)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-5">Run</a>
 
 
@@ -485,7 +485,7 @@ Deps.autorun(function(){
   Meteor.subscribe('snapshots', 12, Session.get('skip'));
 });
 ```
-`/client/main.js` (client)
+<div class="file">`/client/main.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-6">Run</a>
 <p class="test">`Session.set('skip', Session.get('skip')+1)`</p>
 
@@ -500,7 +500,7 @@ Deps.autorun(function(){
   <div class="loading"></div>
 </body>
 ```
-`/client/main.html` (client)
+<div class="file">`/client/main.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-7">Run</a>
 
 
@@ -514,7 +514,7 @@ Deps.autorun(function(){
     });
 });
 ```
-`/client/main.js` (client)
+<div class="file">`/client/main.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c4-8">Run</a>
 
 
