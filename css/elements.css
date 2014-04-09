@@ -179,3 +179,6 @@ p.test:before{
 .reveal .file code{
   color: white;
 }
+.reveal .smaller{
+  font-size: 80%;
+}

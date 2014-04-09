@@ -190,6 +190,15 @@ Snapshots = new Meteor.Collection('snapshots');
 
 
 
+## The Dribbble API
+<div class="smaller">`http://api.dribbble.com/shots/popular?per_page=12`</div>
+
+
+
+<p><img src="images/dribbble-api.png" class="noborder "></p>
+
+
+
 ## Query the Dribbble API
 ```bash
 meteor add http
