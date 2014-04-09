@@ -3,8 +3,7 @@
 
 @SachaGreif
 
-DiscoverMeteor.com
-<a href="javascript:void(0)" class="commit-link" data-value="c1-2">Start</a>
+Discover Meteor
 
 
 
@@ -13,36 +12,40 @@ DiscoverMeteor.com
 
 
 ## Client-Side JavaScript
-jQuery, Backbone, Angular, Ember
+<p><img src="images/meteor-rails.png" class="noborder"></p>
 
 
 
 ## Server-Side JavaScript
-Node
+<p><img src="images/meteor-node.png" class="noborder"></p>
 
 
 
 ## Full-Stack JavaScript
-Meteor is a JavaScript framework with both server-side and client-side components.
+<p><img src="images/meteor-client-server.png" class="noborder"></p>
+<!-- Meteor is a JavaScript framework with both server-side and client-side components. -->
 
 
 
-# 3 Things You Need To Know About Meteor
+# Three Meteor Principles
 
 
 
 ## Data on the Wire
-The client front-loads all HTML, CSS, and JavaScript code necessary to the app when you first connect, then after that only receives data. 
+<p><img src="images/meteor-data-wire.png" class="noborder"></p>
+<!-- The client front-loads all HTML, CSS, and JavaScript code necessary to the app when you first connect, then after that only receives data.  -->
 
 
 
 ## Database Everywhere
-Meteor replicates a subset of the database in the browser's memory for easy access.
+<p><img src="images/meteor-database-everywhere.png" class="noborder"></p>
+<!-- Meteor replicates a subset of the database in the browser's memory for easy access. -->
 
 
 
 ## Reactivity
-Any modification to the database is reflected in real-time on the client.
+<p><img src="images/meteor-reactivity.png" class="noborder"></p>
+<!-- Any modification to the server-side database is reflected in real-time on the client. -->
 
 
 
@@ -56,59 +59,11 @@ Meteor automatically loads any HTML, CSS, or JavaScript file included in a repos
 
 
 ## Hot Code Reload
-Any change to an app's source code automatically triggers a browser refresh.
+Any change to an app's source files automatically triggers a browser refresh.
 
 
 
-# The Meteor Stack
-
-
-
-## Node
-For the server.
-```bash
-node app.js
-```
-
-
-
-## MongoDB
-For the database.
-```js
-Users.find({name: 'Sacha'});
-```
-
-
-
-## Handlebars
-For the templates.
-```html
-{{#each myArray}}
-  <li>{{item}}</li>
-{{/each}}
-```
-
-
-
-## jQuery
-For DOM manipulation.
-```js
-'.button click': function () {
-  $('.links').addClass('inactive');
-}
-```
-
-
-
-## Underscore
-For utility functions.
-```js
-_.pluck(imagesJSONArray, 'url');
-```
-
-
-
-## Review
+## Recap
 Meteor takes existing technologies and makes them work together seamlessly, on both client and server. 
 
 
@@ -132,18 +87,17 @@ Showing the Dribbble homepage over the past 12 hours.
 
 
 
-<p><img src="images/daybbble-diagram-2.png"></p>
+<p><img src="images/daybbble-diagram-2.png" class="noborder bigger"></p>
 A grid of the homepage over time.
 
 
 
-<p><img src="images/daybbble-diagram-1.png"></p>
-Collect data, then display it. 
+<p><img src="images/daybbble-diagram-1.png" class="noborder bigger"></p>
 
 
 
- 
-<a href="javascript:void(0)" class="commit-link" data-value="master">Show Me!</a>
+## The App
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="master">Show Me!</a> -->
 
 
 
@@ -195,7 +149,7 @@ mkdir collections
 
 
 
-## Review
+## Recap
 We now have a working Meteor app. Let's make it actually do something!
 
 
@@ -259,7 +213,7 @@ Meteor.methods({
 
 
 
-## Review
+## Recap
 We're now collecting the 12 most popular Dribbble shots every hour. Next step: displaying them. 
 
 
@@ -268,13 +222,24 @@ We're now collecting the 12 most popular Dribbble shots every hour. Next step: d
 
 
 
-## Loading Data
-Let's preload data into our database.
-<a href="javascript:void(0)" class="commit-link" data-value="load_data">Load Data</a>
+## Preloading Data
+Let's preload data into our database. 
+```js
+var url = 'https://rawgithub.com/SachaG/9798180/raw/ab3c76d1b13578bc7efe66536f4af6f4486cbfb7/Snapshots.json';
+$.getJSON(url, function(data){
+  _.each(data, function(snapshot){Snapshots.insert(snapshot)});
+});
+```
+(Copy to JavaScript console and run)
 
 
 
-## Set Up Our Main Template
+## The Main Template
+<p><img src="images/main.png" class="noborder bigger"></p>
+
+
+
+## The Main Template
 ```html
 <head>
   <title>Gribbble</title>
@@ -290,7 +255,12 @@ Let's preload data into our database.
 
 
 
-## Make a Grid
+## The Grid
+<p><img src="images/grid.png" class="noborder bigger"></p>
+
+
+
+## The Grid
 ```html
 <template name="grid">
   <div class="grid">
@@ -342,6 +312,11 @@ Template.grid.helpers({
 
 
 
+## The Shot
+<p><img src="images/shot.png" class="noborder bigger"></p>
+
+
+
 ## Add Shot Template
 ```js
 <template name="shot">
@@ -374,7 +349,7 @@ Template.grid.helpers({
 
 
 
-## Review
+## Recap
 We're storing and displaying data. We now need to control the flow of data from server to client. 
 
 
@@ -417,7 +392,7 @@ Meteor.subscribe('snapshots', 12);
 
 
 
-## Review
+## Recap
 We've set rules controlling what data is made available to the client, as well as what part of the data the client will actually ask for. Now let's get fancy.
 
 
@@ -443,8 +418,12 @@ Template.shot.events({
 
 
 
+## The Zoom
+<p><img src="images/zoom.png" class="noborder bigger"></p>
+
+
+
 ## Add a Zoom Template
-`/client/shot.js` (client)
 ```html
 <template name="zoom">
   <div class="zoom-shot">
@@ -539,3 +518,18 @@ Deps.autorun(function(){
 <a href="javascript:void(0)" class="commit-link" data-value="c4-8">Run</a>
 
 
+
+## Recap
+We built a simple web app in less than 100 lines of code, and saw an overview of the main Meteor features. 
+
+
+
+## Learn More
+- [Learn Meteor](https://www.meteor.com/learn-meteor)
+- [Discover Meteor](https://www.discovermeteor.com)
+- [Evented Mind](https://www.eventedmind.com/)
+- [MeteorHacks](http://meteorhacks.com/)
+
+
+
+# Thanks!
