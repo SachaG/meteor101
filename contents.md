@@ -92,7 +92,7 @@ A grid of the homepage over time.
 
 
 
-<p><img src="images/daybbble-diagram-1.png" class="noborder bigger"></p>
+<p><img src="images/gribbble-diagram.png" class="noborder"></p>
 
 
 
@@ -228,6 +228,10 @@ We're now collecting the 12 most popular Dribbble shots every hour. Next step: d
 
 
 # Step 3: Displaying Data
+
+
+
+<p><img src="images/ui-diagram.png" class="noborder"></p>
 
 
 
@@ -367,6 +371,10 @@ We're storing and displaying data. We now need to control the flow of data from 
 
 
 
+<p><img src="images/flow-diagram.png" class="noborder"></p>
+
+
+
 ## Remove Packages
 ```bash
 meteor remove autopublish
@@ -374,6 +382,10 @@ meteor remove insecure
 ```
 <a href="javascript:void(0)" class="commit-link" data-value="c3-1">Run</a>
 <p class="test">`Snapshots.find().fetch()`</p>
+
+
+
+<p><img src="images/publication.png" class="border"></p>
 
 
 
@@ -388,6 +400,10 @@ Meteor.publish('snapshots', function(limit) {
 ```
 <div class="file">`/server/publications.js` (server)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c3-2">Run</a>
+
+
+
+<p><img src="images/subscription.png" class="border"></p>
 
 
 
@@ -535,10 +551,15 @@ We built a simple web app in less than 100 lines of code, and saw an overview of
 
 ## Learn More
 - [Learn Meteor](https://www.meteor.com/learn-meteor)
-- [Discover Meteor](https://www.discovermeteor.com)
 - [Evented Mind](https://www.eventedmind.com/)
 - [MeteorHacks](http://meteorhacks.com/)
 
 
 
+## Our Book
+<p><img src="images/discover_meteor_illustration.png" class="noborder"></p>
+
+
+
 # Thanks!
+#### Now go and build something cool :)
