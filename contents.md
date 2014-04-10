@@ -113,7 +113,7 @@ A grid of the homepage over time.
 
 
 
-<p><img src="images/daybbble-diagram-1.png" class="noborder bigger"></p>
+<p><img src="images/gribbble-diagram.png" class="noborder"></p>
 Note: that's the end of the section with pretty images, it's all code from now on.
 
 
@@ -180,6 +180,10 @@ We now have a working Meteor app. Let's make it actually do something!
 
 
 
+<p><img src="images/data-diagram.png" class="noborder"></p>
+
+
+
 ## Create a Collection
 ```js
 Snapshots = new Meteor.Collection('snapshots');
@@ -217,7 +221,7 @@ var queryAPI = function () {
 }
 ```
 <div class="file">`/server/api.js` (server)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c1-4">Run</a>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-4">Run</a> -->
 
 
 
@@ -228,7 +232,7 @@ Meteor.setInterval(function(){
 }, 3600000);
 ```
 <div class="file">`/server/api.js` (server)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c1-5">Run</a>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-5">Run</a> -->
 
 
 
@@ -239,8 +243,8 @@ Meteor.methods({
 });
 ```
 <div class="file">`/server/api.js` (server)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c1-6">Run</a>
-<p class="test">`Meteor.call('queryFromClient')`</p>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-6">Run</a> -->
+<!-- <p class="test">`Meteor.call('queryFromClient')`</p> -->
 
 
 
@@ -250,10 +254,7 @@ We're now collecting the 12 most popular Dribbble shots every hour. Next step: d
 
 
 # Step 3: Displaying Data
-
-
-
-## Preloading Data
+<!-- ## Preloading Data
 Let's preload data into our database. 
 ```js
 var url = 'https://rawgithub.com/SachaG/9798180/raw/ab3c76d1b13578bc7efe66536f4af6f4486cbfb7/Snapshots.json';
@@ -261,7 +262,11 @@ $.getJSON(url, function(data){
   _.each(data, function(snapshot){Snapshots.insert(snapshot)});
 });
 ```
-(Copy to JavaScript console and run)
+(Copy to JavaScript console and run) -->
+
+
+
+<p><img src="images/ui-diagram.png" class="noborder"></p>
 
 
 
@@ -282,7 +287,7 @@ $.getJSON(url, function(data){
 </body>
 ```
 <div class="file">`/client/main.html` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c2-1">Run</a>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-1">Run</a> -->
 
 
 
@@ -304,7 +309,7 @@ $.getJSON(url, function(data){
 </template>
 ```
 <div class="file">`/client/grid.html` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c2-2">Run</a>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-2">Run</a> -->
 
 
 
@@ -357,7 +362,7 @@ Template.grid.helpers({
 </template>
 ```
 <div class="file">`/client/shot.html` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c2-5">Run</a>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-5">Run</a> -->
 
 
 
@@ -389,13 +394,21 @@ We're storing and displaying data. We now need to control the flow of data from 
 
 
 
+<p><img src="images/flow-diagram.png" class="noborder"></p>
+
+
+
 ## Remove Packages
 ```bash
 meteor remove autopublish
 meteor remove insecure
 ```
 <a href="javascript:void(0)" class="commit-link" data-value="c3-1">Run</a>
-<p class="test">`Snapshots.find().fetch()`</p>
+<!-- <p class="test">`Snapshots.find().fetch()`</p> -->
+
+
+
+<p><img src="images/publication.jpg" class="border"></p>
 
 
 
@@ -409,7 +422,11 @@ Meteor.publish('snapshots', function(limit) {
 });
 ```
 <div class="file">`/server/publications.js` (server)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c3-2">Run</a>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c3-2">Run</a> -->
+
+
+
+<p><img src="images/subscription.jpg" class="border"></p>
 
 
 
@@ -419,134 +436,7 @@ Meteor.subscribe('snapshots', 12);
 ```
 <div class="file">`/client/main.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c3-3">Run</a>
-<p class="test">`Snapshots.find().fetch()`</p>
-
-
-
-## Recap
-We've set rules controlling what data is made available to the client, as well as what part of the data the client will actually ask for. Now let's get fancy.
-
-
-
-# Step 5: Getting Fancy
-
-
-
-## Set Up Hover Events
-```js
-Template.shot.events({
-  'mouseenter': function (event) {
-    Session.set('zoomedShot', this);
-  },
-  'mouseleave': function (event) {
-    Session.set('zoomedShot', null);
-  }
-});
-```
-<div class="file">`/client/shot.js` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-1">Run</a>
-<p class="test">`Session.get('zoomedShot')`</p>
-
-
-
-## The Zoom
-<p><img src="images/zoom.png" class="noborder bigger"></p>
-
-
-
-## Add a Zoom Template
-```html
-<template name="zoom">
-  <div class="zoom-shot">
-    {{> shot zoomedShot}}
-  </div>
-</template>
-```
-<div class="file">`/client/zoom.html` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-2">Run</a>
-
-
-
-## Add the Zoom Helper
-```js
-Template.zoom.helpers({
-  zoomedShot: function () {
-    return Session.get('zoomedShot');
-  }
-});
-```
-<div class="file">`/client/zoom.js` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-3">Run</a>
-
-
-
-## Include the Zoom Template
-```html
-<body>
-  <h1>Gribbble</h1>
-  {{> grid}}
-  {{> zoom}}
-</body>
-```
-<div class="file">`/client/main.html` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-4">Run</a>
-
-
-
-## Add a Parameter to the Publication
-```js
-Meteor.publish('snapshots', function(limit, skip) {
-  return Snapshots.find({}, {
-    sort: {timestamp: -1}, 
-    limit: limit, 
-    skip: skip
-  });
-});
-```
-<div class="file">`/server/publications.js` (server)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-5">Run</a>
-
-
-
-## Add a Parameter to the Subscription
-```js
-Session.get('skip', 0);
-
-Deps.autorun(function(){
-  Meteor.subscribe('snapshots', 12, Session.get('skip'));
-});
-```
-<div class="file">`/client/main.js` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-6">Run</a>
-<p class="test">`Session.set('skip', Session.get('skip')+1)`</p>
-
-
-
-## Add a Loading Screen
-```html
-<body>
-  <h1>Gribbble</h1>
-  {{> grid}}
-  {{> zoom}}
-  <div class="loading"></div>
-</body>
-```
-<div class="file">`/client/main.html` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-7">Run</a>
-
-
-
-## Hide the Loading Screen
-```js
-Deps.autorun(function(){
-  Meteor.subscribe('snapshots', Session.get('offset'), 
-    function () {
-      $('.loading').fadeOut('slow');
-    });
-});
-```
-<div class="file">`/client/main.js` (client)</div>
-<a href="javascript:void(0)" class="commit-link" data-value="c4-8">Run</a>
+<!-- <p class="test">`Snapshots.find().fetch()`</p> -->
 
 
 
@@ -556,11 +446,13 @@ We built a simple web app in less than 100 lines of code, and saw an overview of
 
 
 ## Learn More
-- [Learn Meteor](https://www.meteor.com/learn-meteor)
-- [Discover Meteor](https://www.discovermeteor.com)
-- [Evented Mind](https://www.eventedmind.com/)
-- [MeteorHacks](http://meteorhacks.com/)
+<p><img src="images/meteor_book_illustration.png" class="noborder"></p>
+<!-- - [Learn Meteor](https://www.meteor.com/learn-meteor) -->
+<!-- - [Discover Meteor](https://www.discovermeteor.com) -->
+<!-- - [Evented Mind](https://www.eventedmind.com/) -->
+<!-- - [MeteorHacks](http://meteorhacks.com/) -->
 
 
 
 # Thanks!
+#### Now go build something cool :)

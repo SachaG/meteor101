@@ -1,0 +1,124 @@
+## Recap
+We've set rules controlling what data is made available to the client, as well as what part of the data the client will ask for.
+
+
+
+# Step 5: Getting Fancy
+
+
+
+## Set Up Hover Events
+```js
+Template.shot.events({
+  'mouseenter': function (event) {
+    Session.set('zoomedShot', this);
+  },
+  'mouseleave': function (event) {
+    Session.set('zoomedShot', null);
+  }
+});
+```
+<div class="file">`/client/shot.js` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-1">Run</a>
+<p class="test">`Session.get('zoomedShot')`</p>
+
+
+
+## The Zoom
+<p><img src="images/zoom.png" class="noborder bigger"></p>
+
+
+
+## Add a Zoom Template
+```html
+<template name="zoom">
+  <div class="zoom-shot">
+    {{> shot zoomedShot}}
+  </div>
+</template>
+```
+<div class="file">`/client/zoom.html` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-2">Run</a>
+
+
+
+## Add the Zoom Helper
+```js
+Template.zoom.helpers({
+  zoomedShot: function () {
+    return Session.get('zoomedShot');
+  }
+});
+```
+<div class="file">`/client/zoom.js` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-3">Run</a>
+
+
+
+## Include the Zoom Template
+```html
+<body>
+  <h1>Gribbble</h1>
+  {{> grid}}
+  {{> zoom}}
+</body>
+```
+<div class="file">`/client/main.html` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-4">Run</a>
+
+
+
+## Add a Parameter to the Publication
+```js
+Meteor.publish('snapshots', function(limit, skip) {
+  return Snapshots.find({}, {
+    sort: {timestamp: -1}, 
+    limit: limit, 
+    skip: skip
+  });
+});
+```
+<div class="file">`/server/publications.js` (server)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-5">Run</a>
+
+
+
+## Add a Parameter to the Subscription
+```js
+Session.get('skip', 0);
+
+Deps.autorun(function(){
+  Meteor.subscribe('snapshots', 12, Session.get('skip'));
+});
+```
+<div class="file">`/client/main.js` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-6">Run</a>
+<p class="test">`Session.set('skip', Session.get('skip')+1)`</p>
+
+
+
+## Add a Loading Screen
+```html
+<body>
+  <h1>Gribbble</h1>
+  {{> grid}}
+  {{> zoom}}
+  <div class="loading"></div>
+</body>
+```
+<div class="file">`/client/main.html` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-7">Run</a>
+
+
+
+## Hide the Loading Screen
+```js
+Deps.autorun(function(){
+  Meteor.subscribe('snapshots', Session.get('offset'), 
+    function () {
+      $('.loading').fadeOut('slow');
+    });
+});
+```
+<div class="file">`/client/main.js` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-8">Run</a>
