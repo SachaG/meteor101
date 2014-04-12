@@ -68,7 +68,7 @@
 			Reveal.initialize({
 		    multiplex: {
 		        // Example values. To generate your own, see the socket.io server instructions.
-		        secret: '13972900235553773717', 
+		        secret: '13972904366584630459', 
 		        id: 'c10e36070a9b916e', // id, obtained from socket.io server
 		        url: 'revealjs.jit.su:80' // Location of socket.io server
 		    },
@@ -86,8 +86,9 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-	      	{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
-        	{ src: 'plugin/multiplex/client.js', async: true },
+	 				{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+	        { src: 'plugin/multiplex/master.js', async: true },
+	        // { src: 'plugin/notes-server/client.js', async: true },
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
@@ -109,7 +110,7 @@
 
 		    // Bounds for smallest/largest possible scale to apply to content
 		    minScale: 0.2,
-		    maxScale: 2.0
+		    maxScale: 2.5
 			});
 
 			Reveal.addEventListener( 'ready', function( event ) {
@@ -143,7 +144,7 @@
 				console.log(index)
 				$('body').removeClass('full-frame split-layout1 split-layout2');
 
-				if (index == 23){
+				if (index == 20){
 					$('body').addClass('split-layout1');
 				}
 

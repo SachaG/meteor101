@@ -103,28 +103,19 @@ The Dribbble homepage: the 12 most popular “shots”.
 
 
 
-## Grid + Dribbble = Gribbble
-Showing the Dribbble homepage over the past 12 hours. 
+## The App
 
 
 
-<p><img src="images/daybbble-diagram-2.png" class="noborder bigger"></p>
-A grid of the homepage over time.
-
-
-
+<!-- <p><img src="images/gribbble.png" class="noborder bigger"></p> -->
 <p><img src="images/gribbble-diagram.png" class="noborder"></p>
 Note: that's the end of the section with pretty images, it's all code from now on.
-
-
-
-## The App
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="master">Show Me!</a> -->
 
 
 
 
-# Step 1: Setting Up
+# Setting Up
 
 
 
@@ -155,31 +146,33 @@ meteor
 
 
 
-## File Structure
-- Remove Meteor's placeholder files.
+## Remove Meteor's placeholder files.
 ```bash
-rm gribbble.css gribbble.html gribbble.js
+rm gribbble.css 
+rm gribbble.html 
+rm gribbble.js
 ```
-- Create three directories
+
+
+
+## Create three directories
 ```bash
 mkdir client
 mkdir server
 mkdir collections
 ```
-- Copy-paste the stylesheet into `client/style.css`.
+
+
+
+## Add a stylesheet
+Copy-paste the stylesheet into `client/style.css`.
 <a href="javascript:void(0)" class="commit-link" data-value="c1-2">Run</a>
+<!-- ## Recap -->
+<!-- We now have a working Meteor app. Let's make it actually do something! -->
 
 
 
-## Recap
-We now have a working Meteor app. Let's make it actually do something!
-
-
-
-# Step 2: Collecting Data
-
-
-
+### Step 2: Collecting Data
 <p><img src="images/data-diagram.png" class="noborder"></p>
 
 
@@ -233,27 +226,12 @@ Meteor.setInterval(function(){
 ```
 <div class="file">`/server/api.js` (server)</div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-5">Run</a> -->
+<!-- ## Recap -->
+<!-- We're now collecting the 12 most popular Dribbble shots every hour. Next step: displaying them.  -->
 
 
 
-## Recap
-We're now collecting the 12 most popular Dribbble shots every hour. Next step: displaying them. 
-
-
-
-# Step 3: Displaying Data
-<!-- ## Preloading Data
-Let's preload data into our database. 
-```js
-var url = 'https://rawgithub.com/SachaG/9798180/raw/ab3c76d1b13578bc7efe66536f4af6f4486cbfb7/Snapshots.json';
-$.getJSON(url, function(data){
-  _.each(data, function(snapshot){Snapshots.insert(snapshot)});
-});
-```
-(Copy to JavaScript console and run) -->
-
-
-
+### Step 3: Displaying Data
 <p><img src="images/ui-diagram.png" class="noborder"></p>
 
 
@@ -301,19 +279,35 @@ $.getJSON(url, function(data){
 
 
 
+## The `find()` Syntax
+```js
+collection.find(selector, options);
+```
+- `selector`: what to find.
+- `options`: sort, limit, etc.
+
+
+
 ## Fill The Grid With Data
 ```js
 Template.grid.helpers({
   snapshots: function () {
-    return Snapshots.find({}, {
-      sort: {timestamp: -1}, 
-      limit: 12
-    });
+    return Snapshots.find(
+      {}, 
+      {
+        sort: {timestamp: -1}, 
+        limit: 12
+      }
+    );
   }
 });
 ```
 <div class="file">`/client/grid.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-3">Run</a>
+
+
+
+<p><img src="images/dribbble-api.png" class="noborder "></p>
 
 
 
@@ -370,23 +364,13 @@ Template.grid.helpers({
 ```
 <div class="file">`/client/grid.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-6">Run</a>
+<!-- ## Recap -->
+<!-- We're storing and displaying data. We now need to control the flow of data from server to client.  -->
 
 
 
-## Recap
-We're storing and displaying data. We now need to control the flow of data from server to client. 
-
-
-
-# Step 4: Controlling Data
-
-
-
+### Step 4: Controlling Data
 <p><img src="images/flow-diagram.png" class="noborder"></p>
-
-
-
-<p><img src="images/bookstore.jpg" class="border big"></p>
 
 
 
@@ -400,16 +384,27 @@ meteor remove insecure
 
 
 
+## Your Data
+<p><img src="images/bookstore.jpg" class="border big"></p>
+
+
+
+## Publishing
 <p><img src="images/publication.jpg" class="border big"></p>
+
+
+
+## Subscribing
+<p><img src="images/subscription.jpg" class="border big"></p>
 
 
 
 ## Add a Publication
 ```js
-Meteor.publish('snapshots', function(limit) {
+Meteor.publish('snapshots', function() {
   return Snapshots.find({}, {
     sort: {timestamp: -1}, 
-    limit: limit
+    limit: 12
   });
 });
 ```
@@ -418,22 +413,19 @@ Meteor.publish('snapshots', function(limit) {
 
 
 
-<p><img src="images/subscription.jpg" class="border big"></p>
-
-
-
 ## Subscribe to the Publication
 ```js
-Meteor.subscribe('snapshots', 12);
+Meteor.subscribe('snapshots');
 ```
 <div class="file">`/client/main.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c3-3">Run</a>
 <!-- <p class="test">`Snapshots.find().fetch()`</p> -->
+<!-- ## Recap -->
+<!-- We built a simple web app in less than 100 lines of code, and saw an overview of the main Meteor features.  -->
 
 
 
-## Recap
-We built a simple web app in less than 100 lines of code, and saw an overview of the main Meteor features. 
+<p><img src="images/gribbble-diagram.png" class="noborder"></p>
 
 
 

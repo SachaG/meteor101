@@ -16,6 +16,27 @@ Meteor.methods({
 
 
 
+## Preloading Data
+Let's preload data into our database. 
+```js
+var url = 'https://rawgithub.com/SachaG/9798180/raw/ab3c76d1b13578bc7efe66536f4af6f4486cbfb7/Snapshots.json';
+$.getJSON(url, function(data){
+  _.each(data, function(snapshot){Snapshots.insert(snapshot)});
+});
+```
+(Copy to JavaScript console and run)
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Recap
 We've set rules controlling what data is made available to the client, as well as what part of the data the client will ask for.
