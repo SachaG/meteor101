@@ -1,3 +1,22 @@
+## Test the Function
+```js
+Meteor.methods({
+  queryFromClient: queryAPI
+});
+```
+<div class="file">`/server/api.js` (server)</div>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-6">Run</a> -->
+<!-- <p class="test">`Meteor.call('queryFromClient')`</p> -->
+
+
+
+
+
+
+
+
+
+
 ## Recap
 We've set rules controlling what data is made available to the client, as well as what part of the data the client will ask for.
 

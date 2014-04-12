@@ -236,18 +236,6 @@ Meteor.setInterval(function(){
 
 
 
-## Test the Function
-```js
-Meteor.methods({
-  queryFromClient: queryAPI
-});
-```
-<div class="file">`/server/api.js` (server)</div>
-<!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-6">Run</a> -->
-<!-- <p class="test">`Meteor.call('queryFromClient')`</p> -->
-
-
-
 ## Recap
 We're now collecting the 12 most popular Dribbble shots every hour. Next step: displaying them. 
 
@@ -398,6 +386,10 @@ We're storing and displaying data. We now need to control the flow of data from 
 
 
 
+<p><img src="images/bookstore.jpg" class="border big"></p>
+
+
+
 ## Remove Packages
 ```bash
 meteor remove autopublish
@@ -408,7 +400,7 @@ meteor remove insecure
 
 
 
-<p><img src="images/publication.jpg" class="border"></p>
+<p><img src="images/publication.jpg" class="border big"></p>
 
 
 
@@ -426,7 +418,7 @@ Meteor.publish('snapshots', function(limit) {
 
 
 
-<p><img src="images/subscription.jpg" class="border"></p>
+<p><img src="images/subscription.jpg" class="border big"></p>
 
 
 

@@ -165,8 +165,14 @@ p.test:before{
   padding: 0;
 }
 
+.big{
+  transform:scale(1.2);
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+}
+
 .bigger{
-  transform:scale(1.6);
+  transform:scale(1.5);
   margin-top: 80px !important;
   margin-bottom: 80px !important;
 }
