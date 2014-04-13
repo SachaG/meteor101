@@ -59,6 +59,7 @@
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 		<script src="js/jquery.min.js"></script>
+		<script src="js/mousetrap.js"></script>
 
 		<script>
 
@@ -86,8 +87,8 @@
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
-	 				{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
-	        { src: 'plugin/multiplex/master.js', async: true },
+	 				// { src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
+	        // { src: 'plugin/multiplex/master.js', async: true },
 	        // { src: 'plugin/notes-server/client.js', async: true },
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
@@ -96,22 +97,43 @@
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/custom-remotes/custom-remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-
 				],
 
 				// The "normal" size of the presentation, aspect ratio will be preserved
 		    // when the presentation is scaled to fit different resolutions. Can be
 		    // specified using percentage units.
-		    width: 700,
+		    width: 900,
 		    height: 700,
 
 		    // Factor of the display size that should remain empty around the content
 		    margin: 0.1,
 
 		    // Bounds for smallest/largest possible scale to apply to content
-		    minScale: 0.2,
-		    maxScale: 2.5
+		    minScale: 0.9,
+		    maxScale: 0.9
 			});
+
+
+			goToHighlight = function (i) {
+				console.log('going to highlight: '+i)
+				var coord = eval($('.present .highlight').attr('data-coordinates'));
+				highlightIndex = i;
+				if(!!coord[i]){
+					$('.present .highlight').addClass('highlight-visible').attr('style', coord[i]);					
+				}else{
+					$('.present .highlight').removeClass('highlight-visible');
+				}
+			}
+
+			nextHighlight = function () {
+				goToHighlight(highlightIndex+1);
+			}
+			Mousetrap.bind('down', function() { nextHighlight(); });
+
+			prevHighlight = function () {
+				goToHighlight(highlightIndex-1);
+			}
+			Mousetrap.bind('up', function() { prevHighlight(); });
 
 			Reveal.addEventListener( 'ready', function( event ) {
 			    // event.currentSlide, event.indexh, event.indexv
@@ -140,12 +162,20 @@
 
 			Reveal.addEventListener( 'slidechanged', function( event){
 				console.log('changed!')
+
+		    // reset index
+		    highlightIndex = 0;
+
 				var index = Reveal.getIndices().h;
 				console.log(index)
 				$('body').removeClass('full-frame split-layout1 split-layout2');
 
-				if (index == 20){
+				if (index == 17){
 					$('body').addClass('split-layout1');
+				}
+
+				var coord = eval($('.present .highlight-coordinates').attr('data-coordinates'));
+				if(!!coord){
 				}
 
 			});

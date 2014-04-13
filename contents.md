@@ -1,8 +1,10 @@
-# Meteor 101
+# Introduction to Meteor
+### Learning a Framework in 30 Minutes
 
+
+
+## About Me
 @SachaGreif
-
-Discover Meteor
 
 
 
@@ -10,27 +12,27 @@ Discover Meteor
 
 
 
-<p><img src="images/hackernews.png" class="noborder bigger"></p>
+<img src="images/hackernews.png" class="noborder big">
 Note:
 At the time, there wasn't anything like Hacker News for designers. 
 
 
 
-<p><img src="images/meteor.png" class="noborder bigger"></p>
+<img src="images/meteor.png" class="noborder big">
 Note:
 “Wow, a new, experimental, undocumented web framework! What a great way to save some time!”
 
 
 
-<p><img src="images/telescope.png" class="noborder bigger"></p>
+<img src="images/telescope.png" class="noborder big">
 
 
 
-<p><img src="images/sidebar.png" class="noborder bigger"></p>
+<img src="images/sidebar.png" class="noborder big">
 
 
 
-<p><img src="images/discovermeteor.png" class="noborder bigger"></p>
+<img src="images/discovermeteor.png" class="noborder big">
 <!-- <p><img src="images/discovermeteorcontent.png" class="noborder bigger"></p> -->
 
 
@@ -40,53 +42,41 @@ Note:
 
 
 ## Client-Side JavaScript
-<p><img src="images/meteor-rails.png" class="noborder"></p>
+<img src="images/meteor-rails.png" class="noborder">
 
 
 
 ## Server-Side JavaScript
-<p><img src="images/meteor-node.png" class="noborder"></p>
+<img src="images/meteor-node.png" class="noborder">
 
 
 
 ## Full-Stack JavaScript
-<p><img src="images/meteor-client-server.png" class="noborder"></p>
+<img src="images/meteor-client-server.png" class="noborder">
 <!-- Meteor is a JavaScript framework with both server-side and client-side components. -->
-
-
-
-# Three Meteor Principles
+<!-- # Three Meteor Principles -->
 
 
 
 ## Data on the Wire
-<p><img src="images/meteor-data-wire.png" class="noborder"></p>
+<img src="images/meteor-data-wire.png" class="noborder">
 <!-- The client front-loads all HTML, CSS, and JavaScript code necessary to the app when you first connect, then after that only receives data.  -->
 
 
 
 ## Database Everywhere
-<p><img src="images/meteor-database-everywhere.png" class="noborder"></p>
+<img src="images/meteor-database-everywhere.png" class="noborder">
 <!-- Meteor replicates a subset of the database in the browser's memory for easy access. -->
 
 
 
 ## Reactivity
-<p><img src="images/meteor-reactivity.png" class="noborder"></p>
+<img src="images/meteor-reactivity.png" class="noborder">
 <!-- Any modification to the server-side database is reflected in real-time on the client. -->
-
-
-
-# A Few More Cool Things…
-
-
-
-## Everything Included
+<!-- # A Few More Cool Things… -->
+<!-- ## Everything Included -->
 <!-- Meteor automatically loads any HTML, CSS, or JavaScript file included in a repository. -->
-
-
-
-## Hot Code Reload
+<!-- ## Hot Code Reload -->
 <!-- Any change to an app's source files automatically triggers a browser refresh. -->
 Note:
 Meteor takes existing technologies and makes them work together seamlessly, on both client and server. 
@@ -97,13 +87,13 @@ Meteor takes existing technologies and makes them work together seamlessly, on b
 
 
 
-<p><img src="images/dribbble-m.png" class="noborder bigger"></p>
+<p><img src="images/dribbble-m.png" class="noborder big"></p>
 Note:
 The Dribbble homepage: the 12 most popular “shots”.
 
 
 
-## The App
+## Gribbble
 
 
 
@@ -172,8 +162,12 @@ Copy-paste the stylesheet into `client/style.css`.
 
 
 
-### Step 2: Collecting Data
+### Collecting Data
 <p><img src="images/data-diagram.png" class="noborder"></p>
+
+
+
+<img src="images/dribbble-api.png" class="noborder ">
 
 
 
@@ -184,23 +178,18 @@ Snapshots = new Meteor.Collection('snapshots');
 <div class="file">`/collections/snapshots.js` (both)</div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-3">Run</a> -->
 <!-- <p class="test">`Snapshots.find().fetch()`</p> -->
+<!-- ## The Dribbble API -->
+<!-- <div class="smaller">`http://api.dribbble.com/shots/popular?per_page=12`</div> -->
 
 
 
-## The Dribbble API
-<div class="smaller">`http://api.dribbble.com/shots/popular?per_page=12`</div>
-
-
-
-<p><img src="images/dribbble-api.png" class="noborder "></p>
-
-
-
-## Query the Dribbble API
+## Add the HTTP Package
 ```bash
 meteor add http
 ```
 
+
+## Query the Dribbble API
 ```js
 var url="http://api.dribbble.com/shots/popular?per_page=12";
 
@@ -215,14 +204,13 @@ var queryAPI = function () {
 ```
 <div class="file">`/server/api.js` (server)</div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-4">Run</a> -->
+<div class="highlight" data-coordinates="[null, 'top:207px; left: 54px; height: 37px; width: 806px;', 'top:286px; left: 54px; height: 37px; width: 397px;', 'top:325px; left: 81px; height: 37px; width: 537px;', 'top:402px; left: 137px; height: 37px; width: 559px;', 'top:441px; left: 137px; height: 37px; width: 355px;']"></div>
 
 
 
 ## Schedule to Run Every Hour
 ```js
-Meteor.setInterval(function(){
-  queryAPI();
-}, 3600000);
+Meteor.setInterval(queryAPI, 3600000);
 ```
 <div class="file">`/server/api.js` (server)</div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-5">Run</a> -->
@@ -231,13 +219,13 @@ Meteor.setInterval(function(){
 
 
 
-### Step 3: Displaying Data
+### Displaying Data
 <p><img src="images/ui-diagram.png" class="noborder"></p>
 
 
 
 ## The Main Template
-<p><img src="images/main.png" class="noborder bigger"></p>
+<p><img src="images/main.png" class="noborder big"></p>
 
 
 
@@ -253,12 +241,13 @@ Meteor.setInterval(function(){
 </body>
 ```
 <div class="file">`/client/main.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:347px; left: 86px; height: 37px; width: 149px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-1">Run</a> -->
 
 
 
 ## The Grid
-<p><img src="images/grid.png" class="noborder bigger"></p>
+<p><img src="images/grid.png" class="noborder big"></p>
 
 
 
@@ -275,6 +264,7 @@ Meteor.setInterval(function(){
 </template>
 ```
 <div class="file">`/client/grid.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:112px; left: 56px; height: 37px; width: 318px;', 'top:190px; left: 115px; height: 37px; width: 267px;', 'top:268px; left: 166px; height: 37px; width: 187px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-2">Run</a> -->
 
 
@@ -304,6 +294,7 @@ Template.grid.helpers({
 ```
 <div class="file">`/client/grid.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-3">Run</a>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 54px; height: 40px; width: 331px;', 'top:150px; left: 81px; height: 40px; width: 344px;', 'top:189px; left: 111px; height: 40px; width: 312px;', 'top:229px; left: 142px; height: 40px; width: 40px;', 'top:270px; left: 142px; height: 152px; width: 340px;']"></div>
 
 
 
@@ -327,11 +318,12 @@ Template.grid.helpers({
 ```
 <div class="file">`/client/grid.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-4">Run</a>
+<div class="highlight" data-coordinates="[null, 'top:189px; left: 110px; height: 40px; width: 271px;', 'top:267px; left: 167px; height: 40px; width: 283px;', 'top:306px; left: 191px; height: 40px; width: 233px;']"></div>
 
 
 
 ## The Shot
-<p><img src="images/shot.png" class="noborder bigger"></p>
+<p><img src="images/shot.png" class="noborder big"></p>
 
 
 
@@ -344,6 +336,7 @@ Template.grid.helpers({
 </template>
 ```
 <div class="file">`/client/shot.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:151px; left: 212px; height: 40px; width: 98px;', 'top:189px; left: 253px; height: 40px; width: 275px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-5">Run</a> -->
 
 
@@ -363,13 +356,14 @@ Template.grid.helpers({
 </template>
 ```
 <div class="file">`/client/grid.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:307px; left: 195px; height: 40px; width: 132px;']"></div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-6">Run</a>
 <!-- ## Recap -->
 <!-- We're storing and displaying data. We now need to control the flow of data from server to client.  -->
 
 
 
-### Step 4: Controlling Data
+### Controlling Data
 <p><img src="images/flow-diagram.png" class="noborder"></p>
 
 
@@ -385,30 +379,34 @@ meteor remove insecure
 
 
 ## Your Data
-<p><img src="images/bookstore.jpg" class="border big"></p>
+<p><img src="images/bookstore.jpg" class="border shutdown"></p>
 
 
 
 ## Publishing
-<p><img src="images/publication.jpg" class="border big"></p>
+<p><img src="images/publication.jpg" class="border"></p>
 
 
 
 ## Subscribing
-<p><img src="images/subscription.jpg" class="border big"></p>
+<p><img src="images/subscription.jpg" class="border"></p>
 
 
 
 ## Add a Publication
 ```js
 Meteor.publish('snapshots', function() {
-  return Snapshots.find({}, {
-    sort: {timestamp: -1}, 
-    limit: 12
-  });
+  return Snapshots.find(
+    {}, 
+    {
+      sort: {timestamp: -1}, 
+      limit: 12
+    }
+  );
 });
 ```
 <div class="file">`/server/publications.js` (server)</div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 53px; height: 40px; width: 208px;', 'top:111px; left: 263px; height: 40px; width: 158px;', 'top:150px; left: 83px; height: 273px; width: 373px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c3-2">Run</a> -->
 
 
