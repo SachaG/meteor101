@@ -160,6 +160,7 @@ p.test:before{
 .reveal section .noborder{
   border:none;
   background: none;
+  box-shadow: none;
 }
 .reveal .slides>section, .reveal .slides>section>section{
   padding: 0;
@@ -204,4 +205,17 @@ p.test:before{
 }
 .shutdown{
   filter: grayscale(100%);
+}
+/*.reveal img{
+  max-width: 100%;
+  max-height: 100%;
+}*/
+.c1{
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+}
+.c2{
+  float: right;
+  width: 49%;
 }
