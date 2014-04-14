@@ -105,11 +105,11 @@
 		    height: 700,
 
 		    // Factor of the display size that should remain empty around the content
-		    margin: 0.1,
+		    margin: 0,
 
 		    // Bounds for smallest/largest possible scale to apply to content
 		    minScale: 0.9,
-		    maxScale: 0.9
+		    maxScale: 1.5
 			});
 
 
@@ -164,12 +164,13 @@
 
 		    // reset index
 		    highlightIndex = 0;
-
+				$('.highlight').removeClass('highlight-visible');
+				
 				var index = Reveal.getIndices().h;
 				console.log(index)
 				$('body').removeClass('full-frame split-layout1 split-layout2');
 
-				if (index == 17){
+				if (index == 22){
 					$('body').addClass('split-layout1');
 				}
 

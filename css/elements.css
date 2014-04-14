@@ -160,6 +160,7 @@ p.test:before{
 .reveal section .noborder{
   border:none;
   background: none;
+  box-shadow: none;
 }
 .reveal .slides>section, .reveal .slides>section>section{
   padding: 0;
@@ -198,10 +199,43 @@ p.test:before{
   box-shadow: 0px 0px 10px rgba(255,255,255,0.4);
   transition: all 600ms 0ms !important;
   display: none;
+  -webkit-animation: pulse 3s linear infinite;
 }
 .highlight-visible{
   display: block;
 }
+/* HIGHLIGHT - ANIMATION */
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 5px rgba(255,255,255,0.3);
+    border-color: rgba(255,299,6,0.5);
+    transform:scale(1);
+  }
+  50% {
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.6);
+    border-color: rgba(255,299,6,1);
+    transform:scale(1.02);
+  }
+  100% {
+    box-shadow: 0px 0px 5px rgba(255,255,255,0.3);
+    border-color: rgba(255,299,6,0.5);
+    transform:scale(1);
+  }
+}
+
 .shutdown{
   filter: grayscale(100%);
+}
+/*.reveal img{
+  max-width: 100%;
+  max-height: 100%;
+}*/
+.c1{
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+}
+.c2{
+  float: right;
+  width: 49%;
 }

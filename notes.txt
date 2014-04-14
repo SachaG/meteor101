@@ -1,3 +1,10 @@
+- talk more about the "why" (Meteor for designers)
+- talke about personal journey
+
+
+
+
+
 mongorestore --host 127.0.0.1:3001 --db meteor ~/dump/daybbble_meteor_com
 db.hours.renameCollection('snapshots')
 
