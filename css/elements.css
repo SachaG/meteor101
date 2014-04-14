@@ -239,3 +239,14 @@ p.test:before{
   float: right;
   width: 49%;
 }
+
+@media screen and (max-width: 400px) {
+  .big{
+    transform:scale(1);
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .reveal pre code{
+    font-size: 200%;
+  }
+}
