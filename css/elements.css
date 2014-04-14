@@ -199,10 +199,30 @@ p.test:before{
   box-shadow: 0px 0px 10px rgba(255,255,255,0.4);
   transition: all 600ms 0ms !important;
   display: none;
+  -webkit-animation: pulse 3s linear infinite;
 }
 .highlight-visible{
   display: block;
 }
+/* HIGHLIGHT - ANIMATION */
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0px 0px 5px rgba(255,255,255,0.3);
+    border-color: rgba(255,299,6,0.5);
+    transform:scale(1);
+  }
+  50% {
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.6);
+    border-color: rgba(255,299,6,1);
+    transform:scale(1.02);
+  }
+  100% {
+    box-shadow: 0px 0px 5px rgba(255,255,255,0.3);
+    border-color: rgba(255,299,6,0.5);
+    transform:scale(1);
+  }
+}
+
 .shutdown{
   filter: grayscale(100%);
 }

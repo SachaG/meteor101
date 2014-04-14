@@ -3,6 +3,10 @@
 
 
 
+<img src="images/code-ahead.png" class="border big">
+
+
+
 # How It All Started
 
 
@@ -30,10 +34,7 @@
 <img src="images/hackernews.png" class="noborder big">
 Note:
 At the time, there wasn't anything like Hacker News for designers. 
-
-
-
-<img src="images/designernews.png" class="noborder big">
+<!-- <img src="images/designernews.png" class="noborder big"> -->
 
 
 
@@ -77,7 +78,7 @@ Note:
 
 
 
-## Data on the Wire
+## Single Page App
 <img src="images/meteor-data-wire.png" class="noborder">
 <!-- The client front-loads all HTML, CSS, and JavaScript code necessary to the app when you first connect, then after that only receives data.  -->
 
@@ -183,10 +184,6 @@ Copy-paste the stylesheet into `client/style.css`.
 
 ### Collecting Data
 <p><img src="images/data-diagram.png" class="noborder"></p>
-
-
-
-<img src="images/dribbble-api.png" class="noborder ">
 
 
 
