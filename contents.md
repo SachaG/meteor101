@@ -3,6 +3,11 @@
 
 
 
+### Follow Online:
+## `www.meteor101.com`
+
+
+
 <img src="images/code-ahead.png" class="border big">
 
 
@@ -129,14 +134,14 @@ Note: that's the end of the section with pretty images, it's all code from now o
 
 
 
-## Install Meteor
+## Installing Meteor
 ```bash
 curl https://install.meteor.com | /bin/sh
 ```
 
 
 
-## Create an App
+## Creating the App
 Create the app.
 ```bash
 meteor create gribbble
@@ -148,7 +153,7 @@ cd gribbble
 
 
 
-## Run the App
+## Running the App
 ```bash
 meteor
 ```
@@ -156,7 +161,7 @@ meteor
 
 
 
-## Remove Meteor's placeholder files.
+## Removing Placeholder Files
 ```bash
 gribbble.css 
 gribbble.html 
@@ -165,7 +170,7 @@ gribbble.js
 
 
 
-## Create three directories
+## Directory Structure
 ```bash
 /client
 /server
@@ -174,7 +179,7 @@ gribbble.js
 
 
 
-## Add a stylesheet
+## The Stylesheet
 Copy-paste the stylesheet into `client/style.css`.
 <a href="javascript:void(0)" class="commit-link" data-value="c1-2">Run</a>
 <!-- ## Recap -->
@@ -187,12 +192,12 @@ Copy-paste the stylesheet into `client/style.css`.
 
 
 
-## Create a Collection
+## The Collection
 ```js
 Snapshots = new Meteor.Collection('snapshots');
 ```
 <div class="file">`/collections/snapshots.js` (both)</div>
-<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 40px; width: 134px;', 'top:111px; left: 275px; height: 40px; width: 244px;', 'top:111px; left: 525px; height: 40px; width: 150px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 40px; width: 134px;', 'top:111px; left: 226px; height: 40px; width: 314px;', 'top:111px; left: 545px; height: 40px; width: 150px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-3">Run</a> -->
 <!-- <p class="test">`Snapshots.find().fetch()`</p> -->
 <!-- ## The Dribbble API -->
@@ -200,14 +205,14 @@ Snapshots = new Meteor.Collection('snapshots');
 
 
 
-## Add the HTTP Package
+## The HTTP Package
 ```bash
 meteor add http
 ```
 
 
 
-## Query the Dribbble API
+## Querying the Dribbble API
 ```js
 var url="http://api.dribbble.com/shots/popular?per_page=12";
 
@@ -222,15 +227,16 @@ var queryAPI = function () {
 ```
 <div class="file">`/server/api.js` (server)</div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-4">Run</a> -->
-<div class="highlight" data-coordinates="[null, 'top:113px; left: 54px; height: 37px; width: 806px;', 'top:190px; left: 54px; height: 37px; width: 397px;', 'top:230px; left: 81px; height: 37px; width: 537px;', 'top:307px; left: 137px; height: 37px; width: 559px;', 'top:346px; left: 137px; height: 37px; width: 355px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:113px; left: 54px; height: 37px; width: 806px;', 'top:190px; left: 54px; height: 37px; width: 397px;', 'top:230px; left: 81px; height: 37px; width: 537px;', 'top:314px; left: 137px; height: 37px; width: 575px;', 'top:352px; left: 137px; height: 37px; width: 360px;']"></div>
 
 
 
-## Schedule to Run Every Hour
+## Running Every Hour
 ```js
 Meteor.setInterval(queryAPI, 3600000);
 ```
 <div class="file">`/server/api.js` (server)</div>
+<div class="highlight" data-coordinates="[null, 'top:112px; left: 54px; height: 37px; width: 267px;', 'top:112px; left: 324px; height: 37px; width: 125px;', 'top:112px; left: 467px; height: 37px; width: 107px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c1-5">Run</a> -->
 <!-- ## Recap -->
 <!-- We're now collecting the 12 most popular Dribbble shots every hour. Next step: displaying them.  -->
@@ -262,7 +268,7 @@ Meteor.setInterval(queryAPI, 3600000);
 </body>
 ```
 <div class="file">`/client/main.html` (client)</div>
-<div class="highlight" data-coordinates="[null, 'top:347px; left: 86px; height: 37px; width: 149px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 119px; width: 370px;', 'top:269px; left: 56px; height: 164px; width: 282px;', 'top:351px; left: 86px; height: 37px; width: 149px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-1">Run</a> -->
 
 
@@ -284,7 +290,7 @@ Meteor.setInterval(queryAPI, 3600000);
 </template>
 ```
 <div class="file">`/client/grid.html` (client)</div>
-<div class="highlight" data-coordinates="[null, 'top:112px; left: 56px; height: 37px; width: 318px;', 'top:190px; left: 115px; height: 37px; width: 267px;', 'top:268px; left: 166px; height: 37px; width: 187px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:112px; left: 56px; height: 37px; width: 318px;', 'top:190px; left: 115px; height: 37px; width: 267px;', 'top:271px; left: 174px; height: 37px; width: 187px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-2">Run</a> -->
 
 
@@ -298,7 +304,7 @@ collection.find(selector, options);
 
 
 
-## Fill The Grid With Data
+## The `snapshots` Helper
 ```js
 Template.grid.helpers({
   snapshots: function () {
@@ -318,11 +324,12 @@ Template.grid.helpers({
 
 
 
+## A Snapshot
 <img src="images/dribbble-api.png" class="noborder ">
 
 
 
-## Loop Over The Shots
+## Looping Over `data.shots`
 ```html
 <template name="grid">
   <div class="grid">
@@ -338,7 +345,7 @@ Template.grid.helpers({
 ```
 <div class="file">`/client/grid.html` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-4">Run</a>
-<div class="highlight" data-coordinates="[null, 'top:189px; left: 110px; height: 40px; width: 271px;', 'top:267px; left: 167px; height: 40px; width: 283px;', 'top:306px; left: 191px; height: 40px; width: 233px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:189px; left: 115px; height: 40px; width: 271px;', 'top:270px; left: 175px; height: 40px; width: 283px;', 'top:310px; left: 199px; height: 40px; width: 233px;']"></div>
 
 
 
@@ -355,12 +362,12 @@ Template.grid.helpers({
 </template>
 ```
 <div class="file">`/client/shot.html` (client)</div>
-<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 40px; width: 314px;', 'top:151px; left: 212px; height: 40px; width: 98px;', 'top:189px; left: 253px; height: 40px; width: 275px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 66px; height: 40px; width: 314px;', 'top:151px; left: 222px; height: 40px; width: 98px;', 'top:189px; left: 263px; height: 40px; width: 275px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-5">Run</a> -->
 
 
 
-## Include Shot Template
+## Including the `shot` Template
 ```html
 <template name="grid">
   <div class="grid">
@@ -375,7 +382,7 @@ Template.grid.helpers({
 </template>
 ```
 <div class="file">`/client/grid.html` (client)</div>
-<div class="highlight" data-coordinates="[null, 'top:307px; left: 195px; height: 40px; width: 132px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:310px; left: 200px; height: 40px; width: 132px;']"></div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-6">Run</a>
 <!-- ## Recap -->
 <!-- We're storing and displaying data. We now need to control the flow of data from server to client.  -->
@@ -387,32 +394,38 @@ Template.grid.helpers({
 
 
 
-## Remove Packages
+## Removing `autopublish`
 ```bash
 meteor remove autopublish
-meteor remove insecure
 ```
-<a href="javascript:void(0)" class="commit-link" data-value="c3-1">Run</a>
 <!-- <p class="test">`Snapshots.find().fetch()`</p> -->
 
 
 
-### Your Data
+## Removing `insecure`
+```bash
+meteor remove insecure
+```
+<a href="javascript:void(0)" class="commit-link" data-value="c3-1">Run</a>
+
+
+
+### Your App
 <p><img src="images/bookstore.jpg" class="border shutdown"></p>
 
 
 
-### Publishing
+### Publications
 <p><img src="images/publication.jpg" class="border"></p>
 
 
 
-### Subscribing
-<p><img src="images/subscription.jpg" class="border"></p>
+### Subscriptions
+<img src="images/subscription.jpg" class="border">
 
 
 
-## Add a Publication
+## Addding a Publication
 ```js
 Meteor.publish('snapshots', function(clientLimit) {
   return Snapshots.find(
@@ -425,12 +438,12 @@ Meteor.publish('snapshots', function(clientLimit) {
 });
 ```
 <div class="file">`/server/publications.js` (server)</div>
-<div class="highlight" data-coordinates="[null, 'top:111px; left: 53px; height: 40px; width: 208px;', 'top:111px; left: 263px; height: 40px; width: 158px;', 'top:111px; left: 555px; height: 40px; width: 178px;', 'top:150px; left: 83px; height: 273px; width: 373px;', 'top:305px; left: 231px; height: 40px; width: 169px;']"></div>
+<div class="highlight" data-coordinates="[null, 'top:110px; left: 53px; height: 40px; width: 208px;', 'top:110px; left: 272px; height: 40px; width: 158px;', 'top:110px; left: 575px; height: 40px; width: 178px;', 'top:150px; left: 83px; height: 273px; width: 373px;', 'top:309px; left: 240px; height: 40px; width: 169px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c3-2">Run</a> -->
 
 
 
-## Subscribe to the Publication
+## Subscribing to the Publication
 ```js
 Meteor.subscribe('snapshots', 12);
 ```
@@ -442,12 +455,13 @@ Meteor.subscribe('snapshots', 12);
 
 
 
-<p><img src="images/gribbble-diagram.png" class="noborder"></p>
+<img src="images/gribbble-diagram.png" class="noborder">
 
 
 
 ## Learn More
-<p><img src="images/meteor_book_illustration.png" class="noborder"></p>
+<img src="images/meteor_book_illustration.png" class="noborder">
+`www.discovermeteor.com`
 <!-- - [Learn Meteor](https://www.meteor.com/learn-meteor) -->
 <!-- - [Discover Meteor](https://www.discovermeteor.com) -->
 <!-- - [Evented Mind](https://www.eventedmind.com/) -->
@@ -456,4 +470,4 @@ Meteor.subscribe('snapshots', 12);
 
 
 # Thanks!
-#### Now go build something cool :)
+<!-- #### Now go build something cool :) -->
