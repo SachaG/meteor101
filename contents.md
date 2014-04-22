@@ -1,5 +1,6 @@
-# Introduction to Meteor
-### Learning a Framework in 30 Minutes
+<h1 class="title1">Introduction to Meteor</h1>
+<h3 class="tagline1">Learning a Framework in 45 Minutes</h3>
+#### @SachaGreif
 
 
 

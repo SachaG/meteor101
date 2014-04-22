@@ -255,3 +255,10 @@ p.test:before{
     font-size: 200%;
   }
 }
+.title1{
+  font-weight: bold !important;
+}
+.tagline1{
+  margin-bottom: 40px !important;
+  color:rgba(255,255,255,0.6) !important;
+}
