@@ -34,6 +34,62 @@ $.getJSON(url, function(data){
 
 
 
+## Learn More
+<img src="images/meteor_book_illustration.png" class="noborder">
+`www.discovermeteor.com`
+<!-- - [Learn Meteor](https://www.meteor.com/learn-meteor) -->
+<!-- - [Discover Meteor](https://www.discovermeteor.com) -->
+<!-- - [Evented Mind](https://www.eventedmind.com/) -->
+<!-- - [MeteorHacks](http://meteorhacks.com/) -->
+
+
+
+
+
+
+
+
+
+## Add a Parameter to the Publication
+```js
+Meteor.publish('snapshots', function(limit, skip) {
+  return Snapshots.find({}, {
+    sort: {timestamp: -1}, 
+    limit: limit, 
+    skip: skip
+  });
+});
+```
+<div class="file">`/server/publications.js` (server)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-5">Run</a>
+
+
+
+## Add a Parameter to the Subscription
+```js
+Session.get('skip', 0);
+
+Deps.autorun(function(){
+  Meteor.subscribe('snapshots', 12, Session.get('skip'));
+});
+```
+<div class="file">`/client/main.js` (client)</div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-6">Run</a>
+<p class="test">`Session.set('skip', Session.get('skip')+1)`</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

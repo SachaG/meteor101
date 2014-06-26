@@ -1,3 +1,9 @@
+- code changes to do:
+
+- setInterval(queryApi, 3600000)
+- put the loading screen section first before "Add a Parameter to the Publication" section?
+- get rid of var shot = this? and use:     this.image_teaser_url = this.image_url;
+
 - talk more about the "why" (Meteor for designers)
 - talke about personal journey
 

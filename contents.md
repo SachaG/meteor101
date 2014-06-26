@@ -1,65 +1,5 @@
 <h1 class="title1">Introduction to Meteor</h1>
-<h3 class="tagline1">Learning a Framework in 45 Minutes</h3>
 #### @SachaGreif
-
-
-
-### Follow Online:
-## `www.meteor101.com`
-
-
-
-<img src="images/code-ahead.png" class="border big">
-
-
-
-# How It All Started
-
-
-
-<img src="images/portfolio.png" class="noborder big">
-
-
-
-<img src="images/blog.png" class="noborder big">
-
-
-
-<img src="images/ebook.png" class="noborder big">
-
-
-
-<img src="images/thetoolbox.png" class="noborder big">
-
-
-
-<img src="images/folyo.png" class="noborder big">
-
-
-
-<img src="images/hackernews.png" class="noborder big">
-Note:
-At the time, there wasn't anything like Hacker News for designers. 
-<!-- <img src="images/designernews.png" class="noborder big"> -->
-
-
-
-<img src="images/meteor.png" class="noborder big">
-Note:
-“Wow, a new, experimental, undocumented web framework! What a great way to save some time!”
-
-
-
-<img src="images/telescope.png" class="noborder big">
-
-
-
-<img src="images/sidebar.png" class="noborder big">
-
-
-
-<img src="images/discovermeteor.png" class="noborder big">
-<!-- <p><img src="images/discovermeteorcontent.png" class="noborder bigger"></p> -->
 
 
 
@@ -278,6 +218,11 @@ Meteor.setInterval(queryAPI, 3600000);
 
 
 
+## A Snapshot
+<img src="images/dribbble-api.png" class="noborder ">
+
+
+
 ## The `grid` Template
 ```html
 <template name="grid">
@@ -293,6 +238,18 @@ Meteor.setInterval(queryAPI, 3600000);
 <div class="file">`/client/grid.html` (client)</div>
 <div class="highlight" data-coordinates="[null, 'top:112px; left: 56px; height: 37px; width: 318px;', 'top:190px; left: 115px; height: 37px; width: 267px;', 'top:271px; left: 174px; height: 37px; width: 187px;']"></div>
 <!-- <a href="javascript:void(0)" class="commit-link" data-value="c2-2">Run</a> -->
+
+
+
+## The Data Context
+<img src="images/data-context-1.png" class="noborder ">
+<!-- .slide: data-transition="none" -->
+
+
+
+## The Data Context
+<img src="images/data-context-2.png" class="noborder ">
+<!-- .slide: data-transition="none" -->
 
 
 
@@ -322,11 +279,6 @@ Template.grid.helpers({
 <div class="file">`/client/grid.js` (client)</div>
 <a href="javascript:void(0)" class="commit-link" data-value="c2-3">Run</a>
 <div class="highlight" data-coordinates="[null, 'top:111px; left: 54px; height: 40px; width: 331px;', 'top:150px; left: 81px; height: 40px; width: 344px;', 'top:189px; left: 111px; height: 40px; width: 312px;', 'top:229px; left: 142px; height: 40px; width: 40px;', 'top:270px; left: 142px; height: 152px; width: 340px;']"></div>
-
-
-
-## A Snapshot
-<img src="images/dribbble-api.png" class="noborder ">
 
 
 
@@ -456,17 +408,105 @@ Meteor.subscribe('snapshots', 12);
 
 
 
+### Extra Credit
 <img src="images/gribbble-diagram.png" class="noborder">
 
 
 
-## Learn More
-<img src="images/meteor_book_illustration.png" class="noborder">
-`www.discovermeteor.com`
-<!-- - [Learn Meteor](https://www.meteor.com/learn-meteor) -->
-<!-- - [Discover Meteor](https://www.discovermeteor.com) -->
-<!-- - [Evented Mind](https://www.eventedmind.com/) -->
-<!-- - [MeteorHacks](http://meteorhacks.com/) -->
+## The `zoom` Template
+<p><img src="images/zoom.png" class="noborder bigger"></p>
+
+
+
+## Hover Events
+```js
+Template.shot.events({
+  'mouseenter': function (event) {
+    this.image_teaser_url = this.image_url;
+    Session.set('zoomedShot', this);
+  },
+  'mouseleave': function (event) {
+    Session.set('zoomedShot', null);
+  }
+});
+```
+<div class="file">`/client/shot.js` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 39px; width: 320px;', 'top:151px; left: 90px; height: 39px; width: 168px;', 'top:190px; left: 113px; height: 39px; width: 551px;', 'top:230px; left: 113px; height: 39px; width: 168px;', 'top:230px; left: 285px; height: 39px; width: 168px;', 'top:230px; left: 475px; height: 39px; width: 67px;', 'top:310px; left: 90px; height: 39px; width: 168px;', 'top:350px; left: 475px; height: 39px; width: 65px;']"></div>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c4-1">Run</a> -->
+<!-- <p class="test">`Session.get('zoomedShot')`</p> -->
+
+
+
+
+## Include the `shot` Template
+```html
+<template name="zoom">
+  <div class="zoom-shot">
+    {{> shot zoomedShot}}
+  </div>
+</template>
+```
+<div class="file">`/client/zoom.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 39px; width: 320px;', 'top:191px; left: 115px; height: 39px; width: 296px;', 'top:191px; left: 242px; height: 39px; width: 146px;']"></div>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c4-2">Run</a> -->
+
+
+
+## The `zoomedShot` Helper
+```js
+Template.zoom.helpers({
+  zoomedShot: function () {
+    return Session.get('zoomedShot');
+  }
+});
+```
+<div class="file">`/client/zoom.js` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 56px; height: 39px; width: 320px;', 'top:152px; left: 87px; height: 39px; width: 146px;', 'top:191px; left: 210px; height: 39px; width: 351px;']"></div>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c4-3">Run</a> -->
+
+
+
+## Include the `zoom` Template
+```html
+<body>
+  <h1>Gribbble</h1>
+  {{> grid}}
+  {{> zoom}}
+</body>
+```
+<div class="file">`/client/main.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:231px; left: 86px; height: 39px; width: 149px;']"></div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-4">Run</a>
+
+
+
+## Add a Loading Screen
+```html
+<body>
+  <h1>Gribbble</h1>
+  {{> grid}}
+  {{> zoom}}
+  <div class="loading"></div>
+</body>
+```
+<div class="file">`/client/main.html` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:270px; left: 86px; height: 39px; width: 389px;']"></div>
+<!-- <a href="javascript:void(0)" class="commit-link" data-value="c4-7">Run</a> -->
+
+
+
+## Hide the Loading Screen
+```js
+Deps.autorun(function(){
+  Meteor.subscribe('snapshots', 12, 
+    function () {
+      $('.loading').fadeOut('slow');
+    });
+});
+```
+<div class="file">`/client/main.js` (client)</div>
+<div class="highlight" data-coordinates="[null, 'top:111px; left: 55px; height: 39px; width: 180px;', 'top:191px; left: 112px; height: 121px; width: 459px;', 'top:231px; left: 136px; height: 39px; width: 429px;']"></div>
+<a href="javascript:void(0)" class="commit-link" data-value="c4-8">Run</a>
 
 
 
