@@ -95,7 +95,8 @@
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					// { src: 'plugin/custom-remotes/custom-remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				],
 
 				// The "normal" size of the presentation, aspect ratio will be preserved
@@ -108,7 +109,7 @@
 		    margin: 0,
 
 		    // Bounds for smallest/largest possible scale to apply to content
-		    minScale: 0.1,
+		    minScale: 0.3,
 		    maxScale: 1.5
 			});
 
@@ -170,7 +171,7 @@
 				console.log(index)
 				$('body').removeClass('full-frame split-layout1 split-layout2');
 
-				if (index == 23){
+				if (index == 10){
 					$('body').addClass('split-layout1');
 				}
 
